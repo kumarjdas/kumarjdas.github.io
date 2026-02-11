@@ -1,6 +1,0 @@
-[submodule "crawlme"]
-	path = crawlme
-	url = https://github.com/kumarjdas/crawlme.git
-[submodule "spacepotato"]
-	path = spacepotato
-	url = https://github.com/kumarjdas/spacepotato.git
