@@ -3,62 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Potato Racing Game</title>
-  
-  <!-- Favicon (emoji-based) -->
+  <title>Space Potato</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥔</text></svg>">
-  
-  <!-- Styles -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
   <style>
-    body, html {
+    body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-      background-color: #111;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
+      background: #000;
     }
-    #gameCanvas {
+    canvas {
       display: block;
-      background-color: #000;
-      max-width: 100%;
-      max-height: 100%;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    #error-message {
+      color: white;
+      background-color: rgba(0,0,0,0.7);
+      padding: 20px;
+      margin: 20px;
+      border-radius: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: none;
+      text-align: center;
     }
   </style>
-  
-  <!-- Utilities -->
-  <script src="src/utils/helpers.js"></script>
-  <script src="src/utils/input.js"></script>
-  <script src="src/utils/physics.js"></script>
-  <script src="src/core/config.js"></script>
-  
-  <!-- Base Classes -->
-  <script src="src/components/sprite.js"></script>
-  
-  <!-- Game Components -->
-  <script src="src/components/potato.js"></script>
-  <script src="src/components/track.js"></script>
-  <script src="src/components/camera.js"></script>
-  <script src="src/components/powerup.js"></script>
-  <script src="src/components/particle.js"></script>
-  <script src="src/components/minimap.js"></script>
-  <script src="src/components/ui.js"></script>
-  
-  <!-- Game Scenes -->
-  <script src="src/scenes/baseScene.js"></script>
-  <script src="src/scenes/menuScene.js"></script>
-  <script src="src/scenes/raceScene.js"></script>
-  <script src="src/scenes/resultsScene.js"></script>
-  
-  <!-- Core Game Files -->
-  <script src="src/core/game.js"></script>
-  <script src="src/core/main.js"></script>
 </head>
 <body>
-  <canvas id="gameCanvas" width="800" height="600"></canvas>
+  <div id="error-message">
+    <h3>Sound Module Error</h3>
+    <p>To enable sound effects, this game needs to be run from a web server.</p>
+    <p>Try one of these options:</p>
+    <ol>
+      <li>Use a local server like <code>python -m http.server</code> or <code>npm install -g http-server && http-server</code></li>
+      <li>Open this game using a VS Code live server extension</li>
+      <li>Upload to a web hosting service</li>
+    </ol>
+    <p>Click anywhere to continue playing without sound.</p>
+  </div>
+
+  <script>
+    // Handle sound module loading errors
+    window.addEventListener('error', function(e) {
+      if (e.message && (e.message.includes('AudioWorklet') || e.message.includes('blob:null'))) {
+        document.getElementById('error-message').style.display = 'block';
+      }
+    });
+
+    document.addEventListener('click', function() {
+      document.getElementById('error-message').style.display = 'none';
+    });
+  </script>
+  
+  <script src="sketch.js"></script>
+  <script src="player.js"></script>
+  <script src="projectile.js"></script>
+  <script src="enemy.js"></script>
+  <script src="particle.js"></script>
+  <script src="powerup.js"></script>
+  <script src="game.js"></script>
 </body>
 </html> 
