@@ -9,9 +9,9 @@ A space shooter arcade game where you control a potato-shaped spaceship firing f
 - Tech: JavaScript, p5.js, HTML Canvas
 - [Play Space Potato](https://kumarjdas.github.io/spacepotato/)
 
-### 🕸️ Crawlme
-A custom web crawler project that efficiently navigates and indexes web content. Built with performance and flexibility in mind.
-- Tech: JavaScript, Node.js
+### 🍔 Crawlme
+**The Ultimate Food Crawl Planner** - Find, plan, and share food crawls with friends. Optimized routing and interactive maps.
+- Tech: React, Google Maps API, Vite
 - [View Crawlme Project](https://kumarjdas.github.io/crawlme/)
 
 ## Website Features
